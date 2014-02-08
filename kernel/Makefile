@@ -27,6 +27,8 @@ obj-y += power/
 obj-y += cpu/
 obj-y += irq/
 
+CFLAGS_sys_ni.o = $(DISABLE_LTO)
+
 obj-$(CONFIG_CHECKPOINT_RESTORE) += kcmp.o
 obj-$(CONFIG_FREEZER) += freezer.o
 obj-$(CONFIG_PROFILING) += profile.o
