@@ -65,6 +65,9 @@ static void do_partner_resume_event(struct work_struct *work);
 /* Boolean to detect if pm has entered suspend mode */
 static bool suspended = false;
 
+/* Boolean to detect if panel has gone off */
+static bool power_suspended = false;
+
 /* Trap into the TrustZone, and call funcs there. */
 static int __secure_tz_reset_entry2(unsigned int *scm_data, u32 size_scm_data,
 					bool is_64)
@@ -485,8 +488,26 @@ static struct devfreq_governor msm_adreno_tz = {
 	.event_handler = tz_handler,
 };
 
+static void tz_early_suspend(struct power_suspend *handler)
+{
+	power_suspended = true;
+	return;
+}
+
+static void tz_late_resume(struct power_suspend *handler)
+{
+	power_suspended = false;
+	return;
+}
+
+static struct power_suspend tz_power_suspend = {
+	.suspend = tz_early_suspend,
+	.resume = tz_late_resume,
+};
+
 static int __init msm_adreno_tz_init(void)
 {
+	register_power_suspend(&tz_power_suspend);
 	return devfreq_add_governor(&msm_adreno_tz);
 }
 subsys_initcall(msm_adreno_tz_init);
