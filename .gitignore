@@ -33,6 +33,7 @@ modules.builtin
 *.patch
 *.gcno
 Image-dtb
+*.rej
 
 #
 # Top-level generic files
