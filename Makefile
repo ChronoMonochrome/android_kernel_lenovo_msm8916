@@ -347,7 +347,34 @@ CC		= $(srctree)/scripts/gcc-wrapper.py $(REAL_CC)
 CHECKFLAGS     := -D__linux__ -Dlinux -D__STDC__ -Dunix -D__unix__ \
 		  -Wbitwise -Wno-return-void $(CF)
 
-KERNEL_FLAGS	= -mtune=cortex-a53
+KERNEL_FLAGS	= -mtune=cortex-a53 \
+		  -Wunused -Wno-strict-aliasing -Wno-missing-prototypes -Wno-strict-prototypes \
+		  -fno-common \
+		  -Werror-implicit-function-declaration \
+		  -Wno-format-security \
+		  -fno-delete-null-pointer-checks \
+		  -marm \
+		  -mfloat-abi=hard \
+		  -mhard-float \
+		  -ftree-vectorize \
+		  -funsafe-loop-optimizations \
+		  -ftree-parallelize-loops=2 \
+		  -fcx-limited-range \
+		  -fno-signed-zeros \
+                  -fgraphite \
+                  -fgraphite-identity \
+                  -floop-block \
+                  -floop-interchange \
+                  -floop-nest-optimize \
+                  -floop-strip-mine \
+                  -floop-parallelize-all \
+		  -flto \
+		  -ffat-lto-objects \
+		  -fuse-linker-plugin \
+		  -fno-toplevel-reorder \
+		  -ffast-math -fno-finite-math-only -ftrapping-math -fno-associative-math \
+		  -pipe
+
 
 CFLAGS_MODULE   = -DMODULE
 AFLAGS_MODULE   = -DMODULE
