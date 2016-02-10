@@ -352,13 +352,11 @@ KERNEL_FLAGS	= -mtune=cortex-a53 \
 		  -fno-common \
 		  -Werror-implicit-function-declaration \
 		  -Wno-format-security \
-		  -fno-delete-null-pointer-checks \
 		  -marm \
-		  -mfloat-abi=hard \
+		  -mfloat-abi=softfp \
 		  -mhard-float \
 		  -ftree-vectorize \
-		  -funsafe-loop-optimizations \
-		  -ftree-parallelize-loops=2 \
+		  -ftree-parallelize-loops=8 \
 		  -fcx-limited-range \
 		  -fno-signed-zeros \
                   -fgraphite \
