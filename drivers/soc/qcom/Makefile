@@ -1,6 +1,10 @@
 # When adding new entries keep the list in alphabetical order
 CFLAGS_scm.o :=$(call as-instr,.arch_extension sec,-DREQUIRES_SEC=1)
 
+CFLAGS_MODULE += -fno-lto
+KBUILD_CFLAGS += -fno-lto
+
+
 obj-y		+= qdsp6v2/
 
 obj-$(CONFIG_MSM_BOOT_STATS) += boot_stats.o
