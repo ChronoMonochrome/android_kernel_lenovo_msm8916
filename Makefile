@@ -353,8 +353,9 @@ KERNEL_FLAGS	= -mtune=cortex-a53 \
 		  -Werror-implicit-function-declaration \
 		  -Wno-format-security \
 		  -marm \
+                  -march=armv7-a \
+                  -mfpu=vfpv3 \
 		  -mfloat-abi=softfp \
-		  -mhard-float \
 		  -ftree-vectorize \
 		  -ftree-parallelize-loops=8 \
 		  -fcx-limited-range \
