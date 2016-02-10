@@ -66,7 +66,6 @@ config SND_SOC_QDSP6
 
 config SND_SOC_QDSP6V2
 	tristate "SoC ALSA audio driver for QDSP6V2"
-	select MSM_QDSP6_APRV2
 	select SND_SOC_MSM_QDSP6V2_INTF
 	help
 	 To add support for MSM QDSP6V2 Soc Audio.
@@ -134,7 +133,7 @@ config QTI_PP
 
 config SND_SOC_CPE
 	tristate "CPE drivers"
-	select SND_SOC_WCD_CPE
+	depends on SND_SOC_WCD_CPE
 	help
 	 To add support for Codec Processing Engine. This support
 	 is to enable CPE block on the codec and this config needs
