@@ -372,10 +372,6 @@ KERNEL_FLAGS	= -mtune=cortex-a53 \
                   -floop-nest-optimize \
                   -floop-strip-mine \
                   -floop-parallelize-all \
-		  -flto \
-		  -ffat-lto-objects \
-		  -fuse-linker-plugin \
-		  -fno-toplevel-reorder \
 		  -ffast-math -fno-finite-math-only -ftrapping-math -fno-associative-math \
 		  -pipe
 
